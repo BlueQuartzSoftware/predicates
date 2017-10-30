@@ -26,13 +26,14 @@ macro(LibraryProperties targetName DEBUG_EXTENSION)
       SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 
       SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
-            SET_TARGET_PROPERTIES( ${targetName}
-                PROPERTIES
-                INSTALL_NAME_DIR \${CMAKE_INSTALL_PREFIX}/lib)
 
       # add the automatically determined parts of the RPATH
       # which point to directories outside the build tree to the install RPATH
       SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+
+      SET_TARGET_PROPERTIES( ${targetName}
+          PROPERTIES
+          INSTALL_NAME_DIR \${CMAKE_INSTALL_PREFIX}/lib)
 
     endif(APPLE)
 
